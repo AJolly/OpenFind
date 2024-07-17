@@ -42,7 +42,9 @@ OpenOrShowAppBasedOnExeName(AppAddress)
 	
 	}
 	AppExeName := SubStr(AppAddress, InStr(AppAddress, "\", false, -1) + 1)
-
+  	if (activeProcessName = AppExeName) {
+       		HandleWindowsWithSameProcessAndClass(activeProcessName)
+   	}
 	IfWinExist ahk_exe %AppExeName%
 		{
 			WinActivate
